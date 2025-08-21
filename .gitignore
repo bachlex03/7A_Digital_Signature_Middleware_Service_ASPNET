@@ -4,8 +4,8 @@
 
 /csharp
 
-appsettings.json
-appsettings.*.json
+**/appsettings.json
+**/appsettings.*.json
 *.secrets
 *.config
 bin/
