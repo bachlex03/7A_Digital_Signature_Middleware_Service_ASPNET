@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace _7A.Digital_Signature_Middleware.Utils;
 
@@ -17,32 +19,47 @@ public class MakeSignature
 
     public String getSignature()
     {
-        System.Security.Cryptography.RSACryptoServiceProvider key = GetKey();
-        return Sign(this.data, key);
+        using (RSA rsa = GetKey())
+        {
+            return Sign(this.data, rsa);
+        }
     }
 
-    public static string Sign(string content, System.Security.Cryptography.RSACryptoServiceProvider rsa)
+    public static string Sign(string content, RSA rsa)
     {
-        System.Security.Cryptography.RSACryptoServiceProvider crsa = rsa;
-        byte[] Data = Encoding.UTF8.GetBytes(content);
-        byte[] signData = crsa.SignData(Data, "sha1");
-        return Convert.ToBase64String(signData);
-
+        byte[] data = Encoding.UTF8.GetBytes(content);
+        byte[] signature = rsa.SignData(data, HashAlgorithmName.SHA1, RSASignaturePadding.Pkcs1);
+        return Convert.ToBase64String(signature);
     }
-    private System.Security.Cryptography.RSACryptoServiceProvider GetKey()
+
+    private RSA GetKey()
     {
-        System.Security.Cryptography.X509Certificates.X509Certificate2 cert2
-            = new System.Security.Cryptography.X509Certificates.X509Certificate2(
-                this.key, this.passKey,
-                System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.MachineKeySet |
-                System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.PersistKeySet |
-                System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.Exportable);
-        System.Security.Cryptography.RSACryptoServiceProvider rsa = (System.Security.Cryptography.RSACryptoServiceProvider)cert2.PrivateKey;
+        try
+        {
+            X509Certificate2 cert2 = new X509Certificate2(
+                this.key,
+                this.passKey,
+                X509KeyStorageFlags.MachineKeySet |
+                X509KeyStorageFlags.PersistKeySet |
+                X509KeyStorageFlags.Exportable);
 
-        byte[] publicKey = cert2.PublicKey.EncodedKeyValue.RawData;
-        //Console.WriteLine( Convert.ToBase64String(publicKey));
+            // Get the RSA private key
+            RSA? rsa = cert2.GetRSAPrivateKey();
+            if (rsa == null)
+            {
+                throw new CryptographicException("Certificate does not contain an RSA private key.");
+            }
 
-        return rsa;
+            // Optional: Log the public key for debugging
+            byte[] publicKey = cert2.PublicKey.EncodedKeyValue.RawData;
+            // Console.WriteLine(Convert.ToBase64String(publicKey));
+
+            return rsa;
+        }
+        catch (Exception ex)
+        {
+            throw new CryptographicException("Failed to load the private key from the certificate.", ex);
+        }
     }
 
 }
