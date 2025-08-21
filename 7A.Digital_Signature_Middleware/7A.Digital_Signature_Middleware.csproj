@@ -7,6 +7,7 @@
     <RootNamespace>_7A.Digital_Signature_Middleware</RootNamespace>
     <UserSecretsId>50cc99aa-c92a-46dd-85ba-517daeebf9aa</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>

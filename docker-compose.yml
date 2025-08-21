@@ -1,0 +1,6 @@
+services:
+  7a.digital_signature_middleware:
+    image: ${DOCKER_REGISTRY-}7adigitalsignaturemiddleware
+    build:
+      context: .
+      dockerfile: 7A.Digital_Signature_Middleware/Dockerfile

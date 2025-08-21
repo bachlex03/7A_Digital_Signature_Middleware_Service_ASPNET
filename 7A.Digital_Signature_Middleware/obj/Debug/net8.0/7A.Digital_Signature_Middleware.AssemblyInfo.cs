@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("7A.Digital_Signature_Middleware")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6567b0e4abbc99876fc939a1bba75c2c9dbbb6cb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a05fc8c8e3f9421327156ceb071e2be0e7c38f7")]
 [assembly: System.Reflection.AssemblyProductAttribute("7A.Digital_Signature_Middleware")]
 [assembly: System.Reflection.AssemblyTitleAttribute("7A.Digital_Signature_Middleware")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

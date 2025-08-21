@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7A.Digital_Signature_Middleware", "7A.Digital_Signature_Middleware\7A.Digital_Signature_Middleware.csproj", "{B826B01B-E0A0-4084-B497-E785CCED6F77}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9E6D03C9-BDC1-41DB-AE47-1F2E669AECC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B826B01B-E0A0-4084-B497-E785CCED6F77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B826B01B-E0A0-4084-B497-E785CCED6F77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B826B01B-E0A0-4084-B497-E785CCED6F77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E6D03C9-BDC1-41DB-AE47-1F2E669AECC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E6D03C9-BDC1-41DB-AE47-1F2E669AECC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E6D03C9-BDC1-41DB-AE47-1F2E669AECC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E6D03C9-BDC1-41DB-AE47-1F2E669AECC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
